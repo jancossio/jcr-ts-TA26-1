@@ -15,17 +15,17 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="proveedor")
+@Table(name="proveedores")
 public class Proveedor {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	@Column(name = "nombre")
 	private String nombre;
 	
 	@OneToMany
-    @JoinColumn(name="id")
+    //@JoinColumn(name="id")
+	@JsonIgnore
     private List<Suministra> suministra;
 	
 	//Constructores
@@ -35,7 +35,7 @@ public class Proveedor {
 	}
 
 	public Proveedor(String id, String nombre, List<Suministra> suministra) {
-		//super();
+		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.suministra = suministra;
@@ -58,8 +58,8 @@ public class Proveedor {
 		this.nombre = nombre;
 	}
 
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Suministra")
+	//@JsonIgnore
+	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "Suministra")
 	public List<Suministra> getSuministra() {
 		return suministra;
 	}

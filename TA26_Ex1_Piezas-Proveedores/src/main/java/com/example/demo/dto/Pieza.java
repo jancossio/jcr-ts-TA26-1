@@ -15,7 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="pieza")
+@Table(name="piezas")
 public class Pieza {
 
 	@Id
@@ -25,7 +25,8 @@ public class Pieza {
 	private String nombre;
 	
 	@OneToMany
-    @JoinColumn(name="codigo")
+    //@JoinColumn(name="id")
+	@JsonIgnore
     private List<Suministra> suministra;
 	
 	//Constructores
@@ -35,7 +36,7 @@ public class Pieza {
 	}
 
 	public Pieza(Integer codigo, String nombre, List<Suministra> suministra) {
-		//super();
+		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.suministra = suministra;
@@ -58,8 +59,8 @@ public class Pieza {
 		this.nombre = nombre;
 	}
 
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Suministra")
+	//@JsonIgnore
+	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "Suministra")
 	public List<Suministra> getSuministra() {
 		return suministra;
 	}
@@ -70,6 +71,6 @@ public class Pieza {
 
 	@Override
 	public String toString() {
-		return "Pieza [codigo=" + codigo + ", nombre=" + nombre + ", suministra=" + suministra + "]";
+		return "Pieza [codigo=" + codigo + ", nombre=" + nombre + "]";
 	}
 }

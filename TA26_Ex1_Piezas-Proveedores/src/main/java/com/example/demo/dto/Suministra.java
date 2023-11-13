@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +17,9 @@ public class Suministra {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name = "precio")
+	private Integer precio;
+	
 	@ManyToOne
     @JoinColumn(name = "id_proveedor")
     Proveedor proveedor;
@@ -28,15 +32,16 @@ public class Suministra {
 	public Suministra() {
 	
 	}
-
-	public Suministra(Integer id, Proveedor proveedor, Pieza pieza) {
+	
+	public Suministra(Integer id, Integer precio, Proveedor proveedor, Pieza pieza) {
 		super();
 		this.id = id;
+		this.precio = precio;
 		this.proveedor = proveedor;
 		this.pieza = pieza;
 	}
 
-	
+
 	public int getId() {
 		return id;
 	}
@@ -52,6 +57,14 @@ public class Suministra {
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
 	}
+	
+	public Integer getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(Integer precio) {
+		this.precio = precio;
+	}
 
 	public Pieza getPieza() {
 		return pieza;
@@ -61,9 +74,8 @@ public class Suministra {
 		this.pieza = pieza;
 	}
 
-	
 	@Override
 	public String toString() {
-		return "Suministra [id=" + id + ", estudiante=" + proveedor + ", curso=" + pieza + "]";
+		return "Suministra [id=" + id + ", precio=" + precio + ", proveedor=" + proveedor + ", pieza=" + pieza + "]";
 	}
 }
