@@ -23,20 +23,20 @@ public class PiezaController {
 	PiezaServiceImpl piezaServiceImpl;
 	
 	@GetMapping("/piezas")
-	public List<Pieza> listarCcursos(){
+	public List<Pieza> listarPiezas(){
 		return piezaServiceImpl.listarPiezas();
 	}
 	
 	
 	@PostMapping("/piezas")
-	public Pieza salvarCurso(@RequestBody Pieza pieza) {
+	public Pieza salvarPieza(@RequestBody Pieza pieza) {
 		
 		return piezaServiceImpl.guardarPieza(pieza);
 	}
 	
 	
 	@GetMapping("/piezas/{codigo}")
-	public Pieza cursoXID(@PathVariable(name="codigo") Integer codigo) {
+	public Pieza piezaXID(@PathVariable(name="codigo") Integer codigo) {
 		
 		Pieza Pieza_xid= new Pieza();
 		
@@ -46,7 +46,7 @@ public class PiezaController {
 	}
 	
 	@PutMapping("/piezas/{codigo}")
-	public Pieza actualizarCurso(@PathVariable(name="codigo")Integer codigo,@RequestBody Pieza pieza) {
+	public Pieza actualizarPieza(@PathVariable(name="codigo")Integer codigo,@RequestBody Pieza pieza) {
 		
 		Pieza Pieza_seleccionada= new Pieza();
 		Pieza Pieza_actualizada= new Pieza();
@@ -61,7 +61,7 @@ public class PiezaController {
 	}
 	
 	@DeleteMapping("/piezas/{codigo}")
-	public void eleiminarCurso(@PathVariable(name="codigo")Integer codigo) {
+	public void eleiminarPieza(@PathVariable(name="codigo")Integer codigo) {
 		piezaServiceImpl.eliminarPieza(codigo);
 	}
 }

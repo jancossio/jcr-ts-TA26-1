@@ -23,20 +23,20 @@ public class SuministraController {
 	SuministraServiceImpl suministraServiceImpl;
 	
 	@GetMapping("/suministras")
-	public List<Suministra> listarProveedores(){
+	public List<Suministra> listarSuministros(){
 		return suministraServiceImpl.listarSuministros();
 	}
 	
 	
 	@PostMapping("/suministras")
-	public Suministra salvarProveedor(@RequestBody Suministra suministra) {
+	public Suministra salvarSuministro(@RequestBody Suministra suministra) {
 		
 		return suministraServiceImpl.guardarSuministra(suministra);
 	}
 	
 	
 	@GetMapping("/suministras/{id}")
-	public Suministra proveedorXID(@PathVariable(name="id") Integer id) {
+	public Suministra suministrosXID(@PathVariable(name="id") Integer id) {
 		
 		Suministra suministra_xid= new Suministra();
 		
@@ -46,7 +46,7 @@ public class SuministraController {
 	}
 	
 	@PutMapping("/suministras/{id}")
-	public Suministra actualizarProveedor(@PathVariable(name="id")Integer id,@RequestBody Suministra suministra) {
+	public Suministra actualizarSuministro(@PathVariable(name="id")Integer id,@RequestBody Suministra suministra) {
 		
 		Suministra Suministra_seleccionada= new Suministra();
 		Suministra Suministra_actualizada= new Suministra();
@@ -63,7 +63,7 @@ public class SuministraController {
 	}
 	
 	@DeleteMapping("/suministras/{id}")
-	public void eliminarProveedor(@PathVariable(name="id")Integer id) {
+	public void eliminarSuministro(@PathVariable(name="id")Integer id) {
 		suministraServiceImpl.eliminarSuministra(id);
 	}
 }
