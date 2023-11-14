@@ -3,6 +3,7 @@ package com.example.demo.dto;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,9 +25,8 @@ public class Pieza {
 	@Column(name = "nombre")
 	private String nombre;
 	
-	@OneToMany
-    //@JoinColumn(name="id")
-	@JsonIgnore
+	@OneToMany(mappedBy = "pieza")
+	@JsonIgnoreProperties("suministra")
     private List<Suministra> suministra;
 	
 	//Constructores

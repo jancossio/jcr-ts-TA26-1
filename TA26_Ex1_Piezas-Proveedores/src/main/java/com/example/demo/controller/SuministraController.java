@@ -45,7 +45,7 @@ public class SuministraController {
 		return suministra_xid;
 	}
 	
-	@PutMapping("/suministras/{codigo}")
+	@PutMapping("/suministras/{id}")
 	public Suministra actualizarProveedor(@PathVariable(name="id")Integer id,@RequestBody Suministra suministra) {
 		
 		Suministra Suministra_seleccionada= new Suministra();
@@ -53,6 +53,7 @@ public class SuministraController {
 		
 		Suministra_seleccionada= suministraServiceImpl.suministraXID(id);
 		
+		Suministra_seleccionada.setPrecio(suministra.getPrecio());
 		Suministra_seleccionada.setPieza(suministra.getPieza());
 		Suministra_seleccionada.setProveedor(suministra.getProveedor());
 		

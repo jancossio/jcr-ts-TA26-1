@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,10 +24,12 @@ public class Suministra {
 	
 	@ManyToOne
     @JoinColumn(name = "id_proveedor")
+	@JsonIgnoreProperties("suministra")
     Proveedor proveedor;
  
     @ManyToOne
     @JoinColumn(name = "codigo_pieza")
+	@JsonIgnoreProperties("suministra")
     Pieza pieza;
 	
 	

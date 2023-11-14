@@ -45,7 +45,7 @@ public class ProveedorController {
 		return Proveedor_xid;
 	}
 	
-	@PutMapping("/proveedores/{codigo}")
+	@PutMapping("/proveedores/{id}")
 	public Proveedor actualizarProveedor(@PathVariable(name="id")String id,@RequestBody Proveedor proveedor) {
 		
 		Proveedor Proveedor_seleccionado= new Proveedor();
