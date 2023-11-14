@@ -16,26 +16,26 @@ import com.example.demo.dto.Suministra;
 import com.example.demo.service.SuministraServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/suministros")
 public class SuministraController {
 
 	@Autowired
 	SuministraServiceImpl suministraServiceImpl;
 	
-	@GetMapping("/suministras")
+	@GetMapping("/all")
 	public List<Suministra> listarSuministros(){
 		return suministraServiceImpl.listarSuministros();
 	}
 	
 	
-	@PostMapping("/suministras")
+	@PostMapping("/add")
 	public Suministra salvarSuministro(@RequestBody Suministra suministra) {
 		
 		return suministraServiceImpl.guardarSuministra(suministra);
 	}
 	
 	
-	@GetMapping("/suministras/{id}")
+	@GetMapping("/{id}")
 	public Suministra suministrosXID(@PathVariable(name="id") Integer id) {
 		
 		Suministra suministra_xid= new Suministra();
@@ -45,7 +45,7 @@ public class SuministraController {
 		return suministra_xid;
 	}
 	
-	@PutMapping("/suministras/{id}")
+	@PutMapping("/{id}")
 	public Suministra actualizarSuministro(@PathVariable(name="id")Integer id,@RequestBody Suministra suministra) {
 		
 		Suministra Suministra_seleccionada= new Suministra();
@@ -62,7 +62,7 @@ public class SuministraController {
 		return Suministra_actualizada;
 	}
 	
-	@DeleteMapping("/suministras/{id}")
+	@DeleteMapping("/{id}")
 	public void eliminarSuministro(@PathVariable(name="id")Integer id) {
 		suministraServiceImpl.eliminarSuministra(id);
 	}

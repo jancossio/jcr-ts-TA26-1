@@ -16,27 +16,27 @@ import com.example.demo.dto.Pieza;
 import com.example.demo.service.PiezaServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/piezas")
 public class PiezaController {
 
 	@Autowired
 	PiezaServiceImpl piezaServiceImpl;
 	
-	@GetMapping("/piezas")
+	@GetMapping("/all")
 	public List<Pieza> listarPiezas(){
 		return piezaServiceImpl.listarPiezas();
 	}
 	
 	
-	@PostMapping("/piezas")
+	@PostMapping("/add")
 	public Pieza salvarPieza(@RequestBody Pieza pieza) {
 		
 		return piezaServiceImpl.guardarPieza(pieza);
 	}
 	
 	
-	@GetMapping("/piezas/{codigo}")
-	public Pieza piezaXID(@PathVariable(name="codigo") Integer codigo) {
+	@GetMapping("/{id}")
+	public Pieza piezaXID(@PathVariable(name="id") Integer codigo) {
 		
 		Pieza Pieza_xid= new Pieza();
 		
@@ -45,8 +45,8 @@ public class PiezaController {
 		return Pieza_xid;
 	}
 	
-	@PutMapping("/piezas/{codigo}")
-	public Pieza actualizarPieza(@PathVariable(name="codigo")Integer codigo,@RequestBody Pieza pieza) {
+	@PutMapping("/{id}")
+	public Pieza actualizarPieza(@PathVariable(name="id")Integer codigo,@RequestBody Pieza pieza) {
 		
 		Pieza Pieza_seleccionada= new Pieza();
 		Pieza Pieza_actualizada= new Pieza();
@@ -60,8 +60,8 @@ public class PiezaController {
 		return Pieza_actualizada;
 	}
 	
-	@DeleteMapping("/piezas/{codigo}")
-	public void eleiminarPieza(@PathVariable(name="codigo")Integer codigo) {
+	@DeleteMapping("/{id}")
+	public void eleiminarPieza(@PathVariable(name="id")Integer codigo) {
 		piezaServiceImpl.eliminarPieza(codigo);
 	}
 }

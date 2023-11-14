@@ -16,26 +16,26 @@ import com.example.demo.dto.Proveedor;
 import com.example.demo.service.ProveedorServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/proveedores")
 public class ProveedorController {
 
 	@Autowired
 	ProveedorServiceImpl proveedorServiceImpl;
 	
-	@GetMapping("/proveedores")
+	@GetMapping("/all")
 	public List<Proveedor> listarProveedores(){
 		return proveedorServiceImpl.listarProveedores();
 	}
 	
 	
-	@PostMapping("/proveedores")
+	@PostMapping("/add")
 	public Proveedor salvarProveedor(@RequestBody Proveedor pieza) {
 		
 		return proveedorServiceImpl.guardarProveedor(pieza);
 	}
 	
 	
-	@GetMapping("/proveedores/{id}")
+	@GetMapping("/{id}")
 	public Proveedor proveedorXID(@PathVariable(name="id") String id) {
 		
 		Proveedor Proveedor_xid= new Proveedor();
@@ -45,7 +45,7 @@ public class ProveedorController {
 		return Proveedor_xid;
 	}
 	
-	@PutMapping("/proveedores/{id}")
+	@PutMapping("/{id}")
 	public Proveedor actualizarProveedor(@PathVariable(name="id")String id,@RequestBody Proveedor proveedor) {
 		
 		Proveedor Proveedor_seleccionado= new Proveedor();
@@ -60,7 +60,7 @@ public class ProveedorController {
 		return Proveedor_actualizado;
 	}
 	
-	@DeleteMapping("/proveedores/{id}")
+	@DeleteMapping("/{id}")
 	public void eliminarProveedor(@PathVariable(name="id")String id) {
 		proveedorServiceImpl.eliminarProveedor(id);
 	}
